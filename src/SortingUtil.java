@@ -7,25 +7,6 @@
      * Created by Linus&Elias on 2018-03-12.
      */
     public class SortingUtil {
-
-
-        public static void test(String args[]) {
-            int[] numbers = {45, 32, 128, 42, 9, 83, 52, 96, 1, 75};
-            int min = 0;
-
-            for (int i = 0; i < numbers.length; i++) {
-                min = i;
-                for (int j = i + 1; j < numbers.length; j++) {
-                    if (numbers[j] < numbers[min]) {
-                        min = j;
-                    }
-                }
-                int temp = numbers[i];
-                numbers[i] = numbers[min];
-                numbers[min] = temp;
-                System.out.println(numbers[i]);
-            }
-        }
         public static int[] selSort(int[] numbers) {
 
             int i,j;
@@ -90,12 +71,31 @@
             return input;
         }
 
-        public static void selSortStringLength(String[] words) {
+        public static String[] selSortStringLength(String[] words) {
 
+            int i,j,compareVal;
+            for (j = 0; j < words.length-1; j++)
+            {
+                compareVal = j;
+                for (i = j+1; i < words.length; i++)
+                {
+                    if (words[i].length() < words[compareVal].length())
+                    {
+                        compareVal = i;
+                    }
+                }
+                if (compareVal != j) {
+                    String temp,temp1;
+                    temp = words[j];
+                    temp1 = words[compareVal];
+                    words[j] = temp1;
+                    words[compareVal] = temp;
+                }
+            }
+            return words;
         }
 
         public static void selSortStringAlpha(String[] words) {
 
         }
     }
-}
