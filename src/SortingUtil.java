@@ -95,7 +95,36 @@
             return words;
         }
 
-        public static void selSortStringAlpha(String[] words) {
+        public static String[] selSortStringAlpha(String[] words) {
 
+            int i,j,compareVal;
+            for (j = 0; j < words.length-1; j++)
+            {
+                compareVal = j;
+                for (i = j+1; i < words.length; i++)
+                {
+                    if ((int)words[i].toLowerCase().charAt(0) < (int)words[compareVal].toLowerCase().charAt(0))
+                    {
+                        compareVal = i;
+                    }
+                    else if((int)words[i].toLowerCase().charAt(0) == (int)words[compareVal].toLowerCase().charAt(0)) {
+
+                        for (int ch = 0; ch < 2;ch++) {
+                            if( (int)words[i].toLowerCase().charAt(ch) < (int)words[compareVal].toLowerCase().charAt(ch)); {
+                                compareVal=i;
+                                break;
+                            }
+                        }
+                    }
+                }
+                if (compareVal != j) {
+                    String temp,temp1;
+                    temp = words[j];
+                    temp1 = words[compareVal];
+                    words[j] = temp1;
+                    words[compareVal] = temp;
+                }
+            }
+            return words;
         }
     }
