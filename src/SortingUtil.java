@@ -1,9 +1,4 @@
-/**
- * Created by Linus&Elias on 2018-03-12.
- */
-
-
-    /**
+ /**
      * Created by Linus&Elias on 2018-03-12.
      */
     public class SortingUtil {
@@ -101,27 +96,61 @@
             for (j = 0; j < words.length-1; j++)
             {
                 compareVal = j;
-                for (i = j+1; i < words.length; i++)
-                {
-                    if ((int)words[i].toLowerCase().charAt(0) < (int)words[compareVal].toLowerCase().charAt(0))
-                    {
-                        compareVal = i;
+                for (i = j+1; i < words.length; i++) {
+                    int wordsLength = 0;
+                    if (words[i].length() < words[compareVal].length()) {
+                        wordsLength = words[i].length() - 1;
+                    } else if (words[i].length() > words[compareVal].length()) {
+                        wordsLength = words[compareVal].length() - 1;
+                    } else {
+                        wordsLength = words[i].length() - 1;
                     }
-                    else if((int)words[i].toLowerCase().charAt(0) == (int)words[compareVal].toLowerCase().charAt(0)) {
+                    for (int forLoop = 0; forLoop <= wordsLength; forLoop++) {
 
-                        for (int ch = 0; ch < 2;ch++) {
-                            if( (int)words[i].toLowerCase().charAt(ch) < (int)words[compareVal].toLowerCase().charAt(ch)); {
-                                compareVal=i;
+                        if ((int) words[i].toLowerCase().charAt(0) < (int) words[compareVal].toLowerCase().charAt(0)) {
+                            compareVal = i;
+                            break;
+                        } else if ((int) words[i].toLowerCase().charAt(0) == (int) words[compareVal].toLowerCase().charAt(0)) {
+
+
+                            /*if (words[i].length() == 0 || words[compareVal].length() == 0) {
+                                System.out.println("its actually a short string");
+                            }*/
+                            if ((int) words[i].toLowerCase().charAt(forLoop) < (int) words[compareVal].toLowerCase().charAt(forLoop)) {
+                                compareVal = i;
                                 break;
                             }
                         }
+
                     }
                 }
                 if (compareVal != j) {
-                    String temp,temp1;
+                    String temp;
                     temp = words[j];
-                    temp1 = words[compareVal];
-                    words[j] = temp1;
+                    words[j] = words[compareVal];
+                    words[compareVal] = temp;
+                }
+            }
+            return words;
+        }
+        public static String[] selSortStringAlphaTest(String[] words) {
+
+            int i,j,compareVal;
+            for (j = 0; j < words.length-1; j++)
+            {
+                compareVal = j;
+                for (i = j+1; i < words.length; i++)
+                {
+                   // System.out.println(words[i].compareTo(words[compareVal]));
+                    if (words[i].compareTo(words[compareVal]) < words[compareVal].compareTo(words[i]))
+                    {
+                        compareVal = i;
+                    }
+                }
+                if (compareVal != j) {
+                    String temp;
+                    temp = words[j];
+                    words[j] = words[compareVal];
                     words[compareVal] = temp;
                 }
             }
