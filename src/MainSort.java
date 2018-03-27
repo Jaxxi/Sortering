@@ -3,7 +3,7 @@ public class MainSort {
          //SortingUtil.selSort()
         String[] testArray = {"AAÖ","AAC","AAB","11","12","13","!","?","Å","Ä","Ö"};
         //String[] sortedArray = SortingUtil.selSortStringLength(testArray);
-        String[] sortedArray = SortingUtil.selSortStringAlpha(testArray);
+        String[] sortedArray = SortingUtil.selSortStringAlphaCompareTo(testArray);
         for(int i =0; i < testArray.length; i++) {
             System.out.println(sortedArray[i]);
         }

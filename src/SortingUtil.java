@@ -133,7 +133,7 @@
             }
             return words;
         }
-        public static String[] selSortStringAlphaTest(String[] words) {
+        public static String[] selSortStringAlphaCompareTo(String[] words) {
 
             int i,j,compareVal;
             for (j = 0; j < words.length-1; j++)
@@ -142,7 +142,7 @@
                 for (i = j+1; i < words.length; i++)
                 {
                    // System.out.println(words[i].compareTo(words[compareVal]));
-                    if (words[i].compareTo(words[compareVal]) < words[compareVal].compareTo(words[i]))
+                    if (words[i].compareTo(words[compareVal]) < 0)
                     {
                         compareVal = i;
                     }
